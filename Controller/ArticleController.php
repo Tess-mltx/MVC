@@ -41,13 +41,13 @@ class ArticleController
         // DONE: this can be used for a detail page
         $title = $_GET['title'] ?? null; // récupèrer le titre dans l'url
         $articles = $this->getArticles();
-        $selectedArticle = null;
-        foreach ($articles as $article){
-            if ($article->title === $title) {
-                $selectedArticle = $article;
-            break;
-            }
-        }
+        $selectedArticle = array_search($title,  array_column($articles, 'title'));
+        $article = $articles[$selectedArticle];
+
+        $prevIndex = ($selectedArticle > 0) ? $selectedArticle - 1 : 0;
+        $prevArticle = $articles[$prevIndex];
+        $nextIndex = ($selectedArticle < count($articles) - 1) ? $selectedArticle + 1 : 0;
+        $nextArticle = $articles[$nextIndex];
         require 'View/articles/show.php';
     }
 }
