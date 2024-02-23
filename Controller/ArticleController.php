@@ -24,8 +24,8 @@ class ArticleController
         // Note: you might want to use a re-usable databaseManager class - the choice is yours
         // DONE : fetch all articles as $rawArticles (as a simple array)
         $rawArticles = [];
-        $statement = $bdd->prepare('SELECT id, title, description, publish_date FROM articles');        $statement->execute;
-        $statement->execute();
+        $statement = $bdd->prepare('SELECT title, description, publish_date FROM articles');
+        $statement->execute(); // Corrected line
         $rawArticles = $statement->fetchAll();
             
         $articles = [];
@@ -37,12 +37,10 @@ class ArticleController
         return $articles;
     }
 
-    public function show()
-    {
-        // TODO: this can be used for a detail page
+    public function show(){
+        // DONE: this can be used for a detail page
         $articles = $this->getArticles();
-        foreach ($articles as $article) {
-            return $article;
-        }
-        }
+        require 'View/articles/show.php';
+
     }
+}

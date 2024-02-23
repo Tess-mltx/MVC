@@ -18,7 +18,7 @@ class Article
     public function formatPublishDate($format = 'DD-MM-YYYY')
     {
         // DONE : return the date in the required format
-        $dateTime=$this->PublishDate;
+        $dateTime=$this->publishDate;
         $frenchDate = new DateTime($dateTime);
         return $frenchDate;
     }

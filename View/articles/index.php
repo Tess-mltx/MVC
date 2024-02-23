@@ -1,6 +1,6 @@
 <?php require 'View/includes/header.php'?>
 
-<?php require 'ArticleController.php';?>
+
 
 <section>
     <h1>Articles</h1>
