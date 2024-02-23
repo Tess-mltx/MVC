@@ -40,6 +40,10 @@ class ArticleController
     public function show(){
         // DONE: this can be used for a detail page
         $articles = $this->getArticles();
+        foreach ($articles as $article);
+        // get article by title
+
+        // load view
         require 'View/articles/show.php';
 
     }

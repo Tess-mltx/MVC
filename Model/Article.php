@@ -15,11 +15,11 @@ class Article
         $this->publishDate = $publishDate;
     }
 
-    public function formatPublishDate($format = 'DD-MM-YYYY')
+    public function formatPublishDate($format = 'D-M-Y')
     {
         // DONE : return the date in the required format
-        $dateTime=$this->publishDate;
-        $frenchDate = new DateTime($dateTime);
-        return $frenchDate;
+        $dateTime = new DateTime($this->publishDate);
+        
+        return $dateTime->format($format);;
     }
 }
