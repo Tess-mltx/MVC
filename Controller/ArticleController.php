@@ -39,12 +39,15 @@ class ArticleController
 
     public function show(){
         // DONE: this can be used for a detail page
+        $title = $_GET['title'] ?? null; // récupèrer le titre dans l'url
         $articles = $this->getArticles();
-        foreach ($articles as $article);
-        // get article by title
-
-        // load view
+        $selectedArticle = null;
+        foreach ($articles as $article){
+            if ($article->title === $title) {
+                $selectedArticle = $article;
+            break;
+            }
+        }
         require 'View/articles/show.php';
-
     }
 }
