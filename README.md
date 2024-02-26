@@ -2,7 +2,7 @@
 This repository is part of Becode.org training. The objectives are to understand and use an MVC structure to interact with a database.
 ## Table of Contents
 1. [General Info](#general-info)
-2. [Technologies & Libraries](#technologies)
+2. [Technologies & Libraries](#technologies--libraries)
 3. [Installation](#installation)
 4. [Structure](#structure)
 ### General Info
