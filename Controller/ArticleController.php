@@ -1,5 +1,4 @@
 <?php
-
 declare(strict_types = 1);
 
 class ArticleController
@@ -15,12 +14,7 @@ class ArticleController
 
     // Note: this function can also be used in a repository - the choice is yours
     private function getArticles(){
-        // DONE : prepare the database connection
-        try {
-            $bdd = new PDO('mysql:host=localhost;dbname=mvc;charset=utf8', 'root','');
-        } catch (Exception $e) {
-            die('Erreur : '.$e->getMessage());
-        }
+        require("./Connect/mvcDB.php");
         // Note: you might want to use a re-usable databaseManager class - the choice is yours
         // DONE : fetch all articles as $rawArticles (as a simple array)
         $rawArticles = [];
@@ -29,7 +23,8 @@ class ArticleController
         $rawArticles = $statement->fetchAll();
             
         $articles = [];
-        foreach ($rawArticles as $rawArticle) {
+        foreach ($rawArticles as $rawArticle) 
+        {
             // We are converting an article from a "dumb" array to a much more flexible class
             $articles[] = new Article($rawArticle['title'], $rawArticle['description'], $rawArticle['publish_date'], $rawArticle['author']);
         }
@@ -49,5 +44,18 @@ class ArticleController
         $nextIndex = ($selectedArticle < count($articles) - 1) ? $selectedArticle + 1 : 0;
         $nextArticle = $articles[$nextIndex];
         require 'View/articles/show.php';
+    }
+
+    public function showFromAuthor()
+    {
+        $author = $_GET['name'] ?? null;
+        $articles = $this->getArticles();
+        $selectedArticles = [];
+        foreach ($articles as $article) {
+            if ($article->author === $author) {
+                $selectedArticles[] = $article;
+            }
+        }
+        return($selectedArticles);
     }
 }

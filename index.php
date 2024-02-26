@@ -8,9 +8,11 @@ error_reporting(E_ALL);
 
 //include all your model files here
 require 'Model/Article.php';
+require 'Model/Author.php';
 //include all your controllers here
 require 'Controller/HomepageController.php';
 require 'Controller/ArticleController.php';
+require 'Controller/AuthorController.php';
 
 // Get the current page to load
 // If nothing is specified, it will remain empty (home should be loaded)
@@ -28,6 +30,12 @@ switch ($page) {
     case 'articles-show':
         // TODO: detail page
         (new ArticleController())->show();
+        break;
+    case 'authors-index':
+        (new AuthorController())->index();
+        break;
+    case 'authors-show':
+        (new AuthorController())->show();
         break;
     case 'home':
     default:
