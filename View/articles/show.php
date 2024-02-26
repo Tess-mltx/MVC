@@ -3,7 +3,7 @@
 <!-- <?php ?> -->
 
 <section>
-    <h1><?= $article->title ?></h1>
+    <h1><?= $article->title?> - <?= $article->author?></h1>
     <p><?= $article->formatPublishDate() ?></p>
     <p><?= $article->description ?></p>
 

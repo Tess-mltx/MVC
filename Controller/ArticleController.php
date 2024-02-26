@@ -24,14 +24,14 @@ class ArticleController
         // Note: you might want to use a re-usable databaseManager class - the choice is yours
         // DONE : fetch all articles as $rawArticles (as a simple array)
         $rawArticles = [];
-        $statement = $bdd->prepare('SELECT title, description, publish_date FROM articles');
+        $statement = $bdd->prepare('SELECT title, description, publish_date, author FROM articles');
         $statement->execute(); // Corrected line
         $rawArticles = $statement->fetchAll();
             
         $articles = [];
         foreach ($rawArticles as $rawArticle) {
             // We are converting an article from a "dumb" array to a much more flexible class
-            $articles[] = new Article($rawArticle['title'], $rawArticle['description'], $rawArticle['publish_date']);
+            $articles[] = new Article($rawArticle['title'], $rawArticle['description'], $rawArticle['publish_date'], $rawArticle['author']);
         }
 
         return $articles;
