@@ -3,7 +3,7 @@ This repository is part of Becode.org training. The objectives are to understand
 ## Table of Contents
 1. [General Info](#general-info)
 2. [Technologies & Libraries](#technologies--libraries)
-3. [Installation](#installation)
+3. [Installation](#instalation)
 4. [Structure](#structure)
 ### General Info
 ***
